@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Commerce LLC | Standartpark Azərbaycan</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --primary-green: #2d4a22;
+      --accent-green: #5a824b;
+      --light-green: #f1f8ed;
+      --gold-accent: #ff8600;
+      --text-dark: #1a1a1a;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; font-family: 'Inter', sans-serif; color: var(--text-dark); 
+      background-color: #fff; line-height: 1.6; overflow-x: hidden;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(45, 74, 34, 0.8), rgba(0, 4, 40, 0.8)), 
+                  url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=2000') center/cover;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      color: #fff; text-align: center; padding: 0 20px;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; font-weight: 700; }
+    .hero p { font-size: 1.25rem; max-width: 700px; opacity: 0.9; }
+
+    .cta-btn {
+      margin-top: 2.5rem; padding: 1.2rem 3rem; font-size: 1.1rem; font-weight: 600;
+      background: var(--primary-green); color: #fff; border: 2px solid transparent;
+      border-radius: 4px; cursor: pointer; transition: var(--transition);
+    }
+    .cta-btn:hover { background: var(--gold-accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+    /* --- Navigation --- */
+    .tabs-wrapper { position: sticky; top: 0; z-index: 1000; background: #fff; border-bottom: 2px solid #eee; }
+    .tabs { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; overflow-x: auto; padding: 0.5rem; }
+    .tab-button {
+      padding: 1rem 1.5rem;
+      border: none;
+      background: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #000;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-button:hover { color: #000; }
+    .tab-button.active { color: #000; border-bottom-color: var(--primary-green); }
+
+    /* --- Content Layout --- */
+    .tab-content { display: none; padding: 4rem 1rem; max-width: 1200px; margin: 0 auto; }
+    .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card { background: #fff; border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
+    
+    /* --- Services Table --- */
+    .services-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #fff; }
+    .services-table th { background: var(--primary-green); color: #fff; text-align: left; padding: 1.2rem; font-size: 1.1rem; }
+    .services-table td { padding: 1.2rem; border-bottom: 1px solid #edf2f7; vertical-align: top; font-size: 0.95rem; }
+    .services-table tr:nth-child(even) { background-color: var(--light-green); }
+    .topic-col { font-weight: 700; color: var(--primary-green); width: 25%; }
+
+    /* --- Products Harmonization --- */
+    .product-category h4 { color: var(--gold-accent); font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; }
+    
+    /* Main image 30% smaller and centered */
+    .category-main-img { 
+      width: 30%; 
+      display: block; 
+      margin: 0 auto 2.5rem auto; 
+      border-radius: 12px; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    }
+
+    .product-subcategories { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    
+    /* Bigger subcategory cards */
+    .subcategory { 
+      background: var(--light-green); 
+      padding: 2rem; 
+      border-radius: 12px; 
+      border: 1px solid #e2ebd9; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between;
+    }
+    
+    /* Bigger subcategory images */
+    .product-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 12px; margin-top: 1.5rem; }
+    .product-images img { 
+      width: 100%; 
+      height: 140px;
+      object-fit: cover; 
+      border-radius: 8px; 
+      cursor: zoom-in; 
+      transition: 0.3s; 
+      background: #fff;
+      border: 1px solid #d1dbca;
+    }
+    .product-images img:hover { transform: scale(1.05); }
+
+    /* --- Gallery --- */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
+    .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; cursor: zoom-in; transition: 0.3s; }
+    .gallery-grid img:hover { transform: scale(1.04); }
+
+    /* --- Catalog & Contact --- */
+    .catalog-preview { width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px; margin-top: 1.5rem; }
+    .contact-item { font-size: 1.4rem; margin: 1rem 0; color: var(--primary-green); text-decoration: none; display: block; font-weight: 600; }
+    
+    /* --- Lightbox --- */
+    .modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; cursor: pointer; }
+    .modal img { max-width: 90%; max-height: 85%; border: 4px solid #fff; border-radius: 4px; }
+
+    .footer { background: #222; color: #ccc; text-align: center; padding: 3rem 1rem; }
+
+    @media (max-width: 768px) {
+      .services-table, .services-table tbody, .services-table tr, .services-table td { display: block; width: 100%; }
+      .services-table th { display: none; }
+      .topic-col { width: 100%; background: #eef5e9; margin-top: 10px; }
+
+      /* Tabs stop moving on phone */
+      .tabs-wrapper {
+        position: static;
+        top: auto;
+      }
+
+      /* smoother professional mobile tabs */
+      .tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        gap: 0.3rem;
+        padding: 0.55rem 0.6rem;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+
+      .tab-button {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        font-size: 1.1rem;
+        color: #000;
+        padding: 0.95rem 1.15rem;
+      }
+
+      /* PDF scrolling issue on phone */
+      .catalog-preview { display: none; }
+
+      /* Better Mehsullarımız mobile layout */
+      .product-category {
+        margin-bottom: 2rem;
+        padding-bottom: 1.25rem;
+      }
+
+      .product-category h4 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        line-height: 1.35;
+      }
+
+      .category-main-img {
+        width: 55%;
+        max-width: 55%;
+        margin: 0 auto 1.25rem auto;
+        border-radius: 7px;
+      }
+
+      .product-subcategories {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .subcategory {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .subcategory h5 {
+        margin: 0 0 0.75rem 0;
+        font-size: 1rem;
+      }
+
+      .product-images {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 0.75rem;
+      }
+
+      .product-images img {
+        height: 110px;
+        border-radius: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Global Commerce LLC</h1>
+    <p>“GLOBAL COMMERCE” MMC “STANDARTPARK” şirkətinin Azərbaycan ərazisində fəaliyyət göstərən eksklüziv distribütorudur.</p>
+    <button class="cta-btn">Daha ətraflı</button>
+  </section>
+
+  <div class="tabs-wrapper">
+    <div class="tabs">
+      <button class="tab-button active" data-target="services">Services</button>
+      <button class="tab-button" data-target="katalog">Kataloq</button>
+      <button class="tab-button" data-target="mehsullarimiz">Məhsullarımız</button>
+      <button class="tab-button" data-target="fotoqalereya">Fotoqalereya</button>
+      <button class="tab-button" data-target="elage">Əlaqə</button>
+    </div>
+  </div>
+
+  <!-- Services Tab -->
+  <div id="services" class="tab-content active">
+    <div class="card">
+      <h3>Xidmətlər və Korporativ Məlumat</h3>
+      <table class="services-table">
+        <thead>
+          <tr>
+            <th>Mövzu</th>
+            <th>Məlumat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="topic-col">Distribütorluq</td>
+            <td>“GLOBAL COMMERCE” MMC “STANDARTPARK” şirkətinin Azərbaycan ərazisində fəaliyyət göstərən eksklüziv distribütorudur. Biz beynəlxalq istehsalçının yeni standartlarla irəliləyən müasir məhsullarını təqdim edirik.</td>
+          </tr>
+          <tr>
+            <td class="topic-col">Beynəlxalq Təcrübə</td>
+            <td>“STANDARTPARK” 12 illik fəaliyyəti ərzində Azərbaycan, Ukrayna, Gürcüstan, Belarus, Qazaxıstan, Moldova və digər ölkələrdə alıcıların inamını qazanmışdır. Müəssisə dünya standartlarına uyğun yüksək təcrübəsini nümayiş etdirmişdir.</td>
+          </tr>
+          <tr>
+            <td class="topic-col">Keyfiyyət Standartları</td>
+            <td>Zavodlar yüksək səviyyəli idarəetmə və Avropa standartlarına cavab verən məhsulları ilə fərqlənir. Müəssisə “İSO-9001:2009” sertifikatı ilə sertifikatlaşdırılmışdır.</td>
+          </tr>
+          <tr>
+            <td class="topic-col">Məhsul Çeşidləri</td>
+            <td>Çöl-yağış sularının axını sistemləri üçün “Class A 15”-dən “Class F 900”-dək ağırlığa davamlı fibrobeton, polimerbeton və plastik məhsullar. Həmçinin dekorativ yaşıl otlar üçün setka-barmaqlılar (Газонная решётка).</td>
+          </tr>
+          <tr>
+            <td class="topic-col">Məsuliyyət</td>
+            <td>“STANDARTPARK” Azərbaycanda tikinti ərazilərində istifadə olunan bütün məhsullarının davamlılığına görə tam cavabdehlik daşıyır.</td>
+          </tr>
+          <tr>
+            <td class="topic-col">Qlobal Layihələr</td>
+            <td>Məhsullarımız Ukrayna, Rusiya, Belarus, Qazaxıstan, Moldova və ABŞ-da parklar, nəqliyyat magistralları, körpülər, hava limanları, stadionlar və yaşayış binalarını su təhlükəsindən qoruyur.</td>
+          </tr>
+          <tr>
+            <td class="topic-col">Referanslar</td>
+            <td>
+              <ul style="margin: 0; padding-left: 1.2rem;">
+                <li>ARDNŞ-in yanacaq doldurma stansiyaları, Ukrayna;</li>
+                <li>“Kreml” və “Qırmızı” meydança, Rusiya;</li>
+                <li>“Şeremetov” və “Vnukovo” hava limanları, Rusiya;</li>
+                <li>“Alma-Ata” hava limanı, Qazaxıstan;</li>
+                <li>Paşa İnşaat tikinti obyektləri, Azərbaycan;</li>
+                <li>Dənizkənarı parklar, Rusiya və Ukrayna;</li>
+                <li>“Dinamo” stadionu, Ukrayna;</li>
+                <li>“Arena Lvov” stadionu, Ukrayna;</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Katalog Tab -->
+  <div id="katalog" class="tab-content">
+    <div class="card">
+      <h3>Kataloq</h3>
+      <p>Aşağıdakı bölmədən kataloqu vərəqləyə və ya PDF olaraq yükləyə bilərsiniz.</p>
+      <a href="https://www.globcom-llc.com/resources/Kataloq%20Standartpark%20AZE%202014.pdf" class="cta-btn" style="display:inline-block; text-decoration:none;" target="_blank" rel="noopener">Kataloqu Aç (PDF)</a>
+      <iframe src="https://www.globcom-llc.com/resources/Kataloq%20Standartpark%20AZE%202014.pdf" class="catalog-preview"></iframe>
+    </div>
+  </div>
+
+  <!-- Mehsullarimiz Tab -->
+  <div id="mehsullarimiz" class="tab-content">
+    <div class="card">
+      <!-- Category 1 -->
+      <div class="product-category">
+        <h4>Xətti su axın sistemləri</h4>
+        <img src="https://www.globcom-llc.com/resources/xetti%202.jpg?timestamp=1393917403008" class="category-main-img zoomable">
+        <div class="product-subcategories">
+          <div class="subcategory">
+            <h5>Plastik altdıqlar</h5>
+            <div class="product-images">
+              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%201.jpg" class="zoomable">
+              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%202.jpg" class="zoomable">
+              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%203.jpg" class="zoomable">
+            </div>
+          </div>
+          <div class="subcategory">
+            <h5>Polimerbeton altdıqlar</h5>
+            <div class="product-images">
+              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%204.jpg" class="zoomable">
+              <img src="https://www.globcom-llc.com/resources/polimer%20altiq%203.jpg" class="zoomable">
+              <img src="https://www.globcom-llc.com/resources/polimer%20altiq%204.jpg" class="zoomable">
+            </div>
+          </div>
+          <div class="subcategory">
+            <h5>Fibrabeton altdıq</h5>
+            <div class="product-images">
+              <img src="https://www.globcom-llc.com/resources/fibrabeton%201.jpg" class="zoomable">
+            </div>
+          </div>
+          <div class="subcategory">
+            <h5>Qum qəbuledicilər</h5>
+            <div class="product-images">
+              <img src="https://www.globcom-llc.com/resources/peskoulovitel%20plastik.jpg" class="zoomable">
+              <img src="https://www.globcom-llc.com/resources/peskoulovitel%20polimerbeton.jpg" class="zoomable">
+              <img src="https://www.globcom-llc.com/resources/fibrabeton%20pekoulovitel.jpg" class="zoomable">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="product-category">
+        <h4>Nöqtəli su axın sistemləri</h4>
+        <img src="https://www.globcom-llc.com/resources/noqteli%201.jpg" class="category-main-img zoomable">
+        <div class="product-subcategories">
+          <div class="subcategory"><h5>Yağış qəbuledicilər</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/dojdepriemnik%201.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Qapaqlar (Plastik)</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/%D0%B2%D1%89%D0%BE%D0%B2%D1%83%D0%B7%D0%BA%D1%88%D1%83%D1%8C%D1%82%D1%88%D0%BB%20%D0%BA%D1%83%D1%8B%D1%80%D1%83%D0%B5%D0%BB%D1%84%20%D0%B7%D0%B4%D1%84%D1%8B%D0%B5%D1%88%D0%BB.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Aksesuarlar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/korzinka.jpg" class="zoomable"><img src="https://www.globcom-llc.com/resources/pereqorodka.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Çuqun</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/reshetka%20dojdepriemnik%20chuqun.jpg" class="zoomable"></div></div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="product-category">
+        <h4>Üstlük barmaqlılar (решётки)</h4>
+        <img src="https://www.globcom-llc.com/resources/reshetka.jpg" class="category-main-img zoomable">
+        <div class="product-subcategories">
+          <div class="subcategory"><h5>Plastik barmaqlılar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/plastik%20reshetka.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Çuqun barmaqlılar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/chuqun%20reshetka%201.jpg" class="zoomable"><img src="https://www.globcom-llc.com/resources/chuqun%20reshetka%202.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Bərkidicilər</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/berkidiciler.jpg" class="zoomable"></div></div>
+        </div>
+      </div>
+
+      <!-- Category 4 -->
+      <div class="product-category">
+        <h4>Ot örtükləri üçün barmaqlılar</h4>
+        <img src="https://www.globcom-llc.com/resources/qazon%20reshetka%20.jpg" class="category-main-img zoomable">
+      </div>
+    </div>
+  </div>
+
+  <!-- Fotoqalereya Tab -->
+  <div id="fotoqalereya" class="tab-content">
+    <div class="card">
+      <h3>Fotoqalereya</h3>
+      <div class="gallery-grid">
+        <img src="https://www.globcom-llc.com/resources/2012-08-30%2014.38.55.jpg" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Морпорт%20Питер%20Контейнерный%20терминал%202.jpg" alt="">
+        <img src="https://www.globcom-llc.com/resources/Пункт%20оплаты_М4%20Дон.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Socar%201.jpg" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Socar%202.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Lukoil.jpg" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/IMG_0052.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/IMG_0187.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/IMG_20002.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/5.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/IMG_03026.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/t%20%281%29.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/IMG_4466.jpg" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Умань_Софиевский%20парк.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/IMG_0095.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Наши%20объекты%20002.jpg" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Гост.Экспресс%20001%20Киев.jpg" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Стадіон%20Дніпро.JPG" class="zoomable">
+      </div>
+    </div>
+  </div>
+
+  <!-- Elage Tab -->
+  <div id="elage" class="tab-content">
+    <div class="card" style="text-align: center;">
+      <h3>Bizimlə Əlaqə</h3>
+      <a href="tel:+994124364116" class="contact-item">📞 +99412 436-41-16</a>
+      <a href="tel:+994554023121" class="contact-item">📞 +99455 402-31-21</a>
+      <a href="mailto:contact@globalcommerce.com" class="contact-item">📧 contact@globalcommerce.com</a>
+      <hr style="margin: 2rem 0; border: 0; border-top: 1px solid #eee;">
+      <p>© 2013-2026 Global Commerce MMC • Built with care and modern design.</p>
+    </div>
+  </div>
+
+  <div id="imgModal" class="modal"><img id="fullImg"></div>
+
+  <footer class="footer">
+    <p>© 2013-2026 Global Commerce MMC | Bütün hüquqlar qorunur.</p>
+    <div id="google_translate_element"></div>
+  </footer>
+
+  <script>
+    // Scroll to content
+    document.querySelector('.cta-btn').addEventListener('click', () => {
+      document.querySelector('.tabs-wrapper').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Tab Logic
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+
+    // Lightbox Logic
+    const modal = document.getElementById("imgModal");
+    const fullImg = document.getElementById("fullImg");
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.onclick = () => {
+        modal.style.display = "flex";
+        fullImg.src = img.src;
+      };
+    });
+    modal.onclick = () => { modal.style.display = "none"; };
+
+    // Translate
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'az'}, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
