@@ -24,12 +24,27 @@
 
     /* --- Hero Section --- */
     .hero {
+      position: relative;
       height: 100vh;
       background: linear-gradient(135deg, rgba(45, 74, 34, 0.8), rgba(0, 4, 40, 0.8)), 
                   url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=2000') center/cover;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       color: #fff; text-align: center; padding: 0 20px;
     }
+
+    /* Logo Styling */
+    .logo-container {
+      position: absolute;
+      top: 30px;
+      left: 10px;
+      z-index: 10;
+    }
+    .logo-container img {
+      height: 230px; 
+      width: auto;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
     .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; font-weight: 700; }
     .hero p { font-size: 1.25rem; max-width: 700px; opacity: 0.9; }
 
@@ -94,7 +109,8 @@
       border: 1px solid #e2ebd9; 
       display: flex; 
       flex-direction: column; 
-      justify-content: space-between;
+      justify-content: flex-start; 
+      gap: 1rem;
     }
     
     /* Bigger subcategory images */
@@ -127,6 +143,16 @@
     .footer { background: #222; color: #ccc; text-align: center; padding: 3rem 1rem; }
 
     @media (max-width: 768px) {
+      .logo-container { 
+        top: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+      }
+      .logo-container img { 
+        height: 130px; 
+        /* filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.3)); */
+      }
+      
       .services-table, .services-table tbody, .services-table tr, .services-table td { display: block; width: 100%; }
       .services-table th { display: none; }
       .topic-col { width: 100%; background: #eef5e9; margin-top: 10px; }
@@ -209,6 +235,9 @@
 <body>
 
   <section class="hero">
+    <div class="logo-container">
+      <img src="img1.png" alt="Global Commerce Logo">
+    </div>
     <h1>Global Commerce LLC</h1>
     <p>“GLOBAL COMMERCE” MMC “STANDARTPARK” şirkətinin Azərbaycan ərazisində fəaliyyət göstərən eksklüziv distribütorudur.</p>
     <button class="cta-btn">Daha ətraflı</button>
@@ -238,23 +267,23 @@
         <tbody>
           <tr>
             <td class="topic-col">Distribütorluq</td>
-            <td>“GLOBAL COMMERCE” MMC “STANDARTPARK” şirkətinin Azərbaycan ərazisində fəaliyyət göstərən eksklüziv distribütorudur. Biz beynəlxalq istehsalçının yeni standartlarla irəliləyən müasir məhsullarını təqdim edirik.</td>
+            <td>“Global Commerce” MMC dünya səviyyəli mühəndislik həllərinin ölkə daxilində yeganə rəsmi nümayəndəsidir. Biz qlobal sənaye standartlarını müəyyən edən innovativ və müasir texnologiyaları yerli bazara təqdim edirik.</td>
           </tr>
           <tr>
             <td class="topic-col">Beynəlxalq Təcrübə</td>
-            <td>“STANDARTPARK” 12 illik fəaliyyəti ərzində Azərbaycan, Ukrayna, Gürcüstan, Belarus, Qazaxıstan, Moldova və digər ölkələrdə alıcıların inamını qazanmışdır. Müəssisə dünya standartlarına uyğun yüksək təcrübəsini nümayiş etdirmişdir.</td>
+            <td>On üç ildən artıq davam edən fəaliyyətimiz boyu müxtəlif xarici bazarlarda geniş müştəri kütləsinin etimadını qazanmışıq. Müəssisəmiz qlobal standartlara tam uyğunluq nümayiş etdirərək zəngin təcrübəyə malikdir.</td>
           </tr>
           <tr>
             <td class="topic-col">Keyfiyyət Standartları</td>
-            <td>Zavodlar yüksək səviyyəli idarəetmə və Avropa standartlarına cavab verən məhsulları ilə fərqlənir. Müəssisə “İSO-9001:2009” sertifikatı ilə sertifikatlaşdırılmışdır.</td>
+            <td>İstehsalat proseslərimiz yüksək səviyyəli menecment sistemi və Avropa keyfiyyət normaları üzərində qurulmuşdur. Şirkətimiz tərəfindən təklif olunan həllər beynəlxalq ISO-9001:2009 sertifikatına sahibdir.</td>
           </tr>
           <tr>
             <td class="topic-col">Məhsul Çeşidləri</td>
-            <td>Çöl-yağış sularının axını sistemləri üçün “Class A 15”-dən “Class F 900”-dək ağırlığa davamlı fibrobeton, polimerbeton və plastik məhsullar. Həmçinin dekorativ yaşıl otlar üçün setka-barmaqlılar (Газонная решётка).</td>
+            <td>Yağış və səth sularının effektiv kənarlaşdırılması üçün müxtəlif ağırlıqlara davamlı fibrobeton, polimerbeton və yüksək keyfiyyətli plastik sistemlərin təchizatını həyata keçiririk. Bura həmçinin landşaft dizaynı üçün nəzərdə tutulmuş dekorativ qazon şəbəkələri də daxildir.</td>
           </tr>
           <tr>
             <td class="topic-col">Məsuliyyət</td>
-            <td>“STANDARTPARK” Azərbaycanda tikinti ərazilərində istifadə olunan bütün məhsullarının davamlılığına görə tam cavabdehlik daşıyır.</td>
+            <td>Təqdim etdiyimiz mühəndislik həlləri bir çox regionlarda strateji magistralların, körpülərin, aeroportların, idman arenalarının və müasir yaşayış komplekslərinin su təhlükəsizliyini təmin edir.</td>
           </tr>
           <tr>
             <td class="topic-col">Qlobal Layihələr</td>
@@ -269,7 +298,7 @@
                 <li>“Şeremetov” və “Vnukovo” hava limanları, Rusiya;</li>
                 <li>“Alma-Ata” hava limanı, Qazaxıstan;</li>
                 <li>Paşa İnşaat tikinti obyektləri, Azərbaycan;</li>
-                <li>Dənizkənarı parklar, Rusiya və Ukrayna;</li>
+                <li>Dənizkənarı parklar, Rusiya ve Ukrayna;</li>
                 <li>“Dinamo” stadionu, Ukrayna;</li>
                 <li>“Arena Lvov” stadionu, Ukrayna;</li>
               </ul>
@@ -296,36 +325,31 @@
       <!-- Category 1 -->
       <div class="product-category">
         <h4>Xətti su axın sistemləri</h4>
-        <img src="https://www.globcom-llc.com/resources/xetti%202.jpg?timestamp=1393917403008" class="category-main-img zoomable">
+        <!-- <img src="https://www.globcom-llc.com/resources/xetti%202.jpg?timestamp=1393917403008" class="category-main-img zoomable"> -->
         <div class="product-subcategories">
           <div class="subcategory">
-            <h5>Plastik altdıqlar</h5>
+            <h5>Seriya "Basic"</h5>
             <div class="product-images">
-              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%201.jpg" class="zoomable">
-              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%202.jpg" class="zoomable">
-              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%203.jpg" class="zoomable">
+              <img src="img2.png" class="zoomable">
+              <img src="img3.png" class="zoomable">
+              <img src="img4.png" class="zoomable">
+              <img src="img5.png" class="zoomable">
+              <img src="img6.png" class="zoomable">
+              <img src="img7.png" class="zoomable">
             </div>
           </div>
           <div class="subcategory">
-            <h5>Polimerbeton altdıqlar</h5>
+            <h5>Seriya "Basic DN 100"</h5>
             <div class="product-images">
-              <img src="https://www.globcom-llc.com/resources/xetti%20lotok%204.jpg" class="zoomable">
-              <img src="https://www.globcom-llc.com/resources/polimer%20altiq%203.jpg" class="zoomable">
-              <img src="https://www.globcom-llc.com/resources/polimer%20altiq%204.jpg" class="zoomable">
+              <img src="img-1.png" class="zoomable">
+              <img src="img-2.png" class="zoomable">
             </div>
           </div>
           <div class="subcategory">
-            <h5>Fibrabeton altdıq</h5>
+            <h5>Seriya "MonoBlock DN 100</h5>
             <div class="product-images">
-              <img src="https://www.globcom-llc.com/resources/fibrabeton%201.jpg" class="zoomable">
-            </div>
-          </div>
-          <div class="subcategory">
-            <h5>Qum qəbuledicilər</h5>
-            <div class="product-images">
-              <img src="https://www.globcom-llc.com/resources/peskoulovitel%20plastik.jpg" class="zoomable">
-              <img src="https://www.globcom-llc.com/resources/peskoulovitel%20polimerbeton.jpg" class="zoomable">
-              <img src="https://www.globcom-llc.com/resources/fibrabeton%20pekoulovitel.jpg" class="zoomable">
+              <img src="img8.png" class="zoomable">
+
             </div>
           </div>
         </div>
@@ -334,30 +358,39 @@
       <!-- Category 2 -->
       <div class="product-category">
         <h4>Nöqtəli su axın sistemləri</h4>
-        <img src="https://www.globcom-llc.com/resources/noqteli%201.jpg" class="category-main-img zoomable">
+        <!-- <img src="https://www.globcom-llc.com/resources/noqteli%201.jpg" class="category-main-img zoomable"> -->
         <div class="product-subcategories">
-          <div class="subcategory"><h5>Yağış qəbuledicilər</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/dojdepriemnik%201.jpg" class="zoomable"></div></div>
-          <div class="subcategory"><h5>Qapaqlar (Plastik)</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/%D0%B2%D1%89%D0%BE%D0%B2%D1%83%D0%B7%D0%BA%D1%88%D1%83%D1%8C%D1%82%D1%88%D0%BB%20%D0%BA%D1%83%D1%8B%D1%80%D1%83%D0%B5%D0%BB%D1%84%20%D0%B7%D0%B4%D1%84%D1%8B%D0%B5%D1%88%D0%BB.jpg" class="zoomable"></div></div>
-          <div class="subcategory"><h5>Aksesuarlar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/korzinka.jpg" class="zoomable"><img src="https://www.globcom-llc.com/resources/pereqorodka.jpg" class="zoomable"></div></div>
-          <div class="subcategory"><h5>Çuqun</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/reshetka%20dojdepriemnik%20chuqun.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Seriya "Basic 300x300"</h5><div class="product-images"><img src="img_1.png" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Seriya "Basic 400x400"</h5><div class="product-images"><img src="img_2.png" class="zoomable"></div></div>
+          
         </div>
       </div>
 
       <!-- Category 3 -->
       <div class="product-category">
-        <h4>Üstlük barmaqlılar (решётки)</h4>
-        <img src="https://www.globcom-llc.com/resources/reshetka.jpg" class="category-main-img zoomable">
+        <h4>Yarıqlı örtüklər</h4>
+        <!-- <img src="https://www.globcom-llc.com/resources/reshetka.jpg" class="category-main-img zoomable"> -->
         <div class="product-subcategories">
-          <div class="subcategory"><h5>Plastik barmaqlılar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/plastik%20reshetka.jpg" class="zoomable"></div></div>
-          <div class="subcategory"><h5>Çuqun barmaqlılar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/chuqun%20reshetka%201.jpg" class="zoomable"><img src="https://www.globcom-llc.com/resources/chuqun%20reshetka%202.jpg" class="zoomable"></div></div>
-          <div class="subcategory"><h5>Bərkidicilər</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/berkidiciler.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Seriya "Slim Drain"</h5><div class="product-images"><img src="imn.png" class="zoomable"></div></div>
+          <!-- <div class="subcategory"><h5>Çuqun barmaqlılar</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/chuqun%20reshetka%201.jpg" class="zoomable"><img src="https://www.globcom-llc.com/resources/chuqun%20reshetka%202.jpg" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Bərkidicilər</h5><div class="product-images"><img src="https://www.globcom-llc.com/resources/berkidiciler.jpg" class="zoomable"></div></div> -->
         </div>
       </div>
 
       <!-- Category 4 -->
       <div class="product-category">
-        <h4>Ot örtükləri üçün barmaqlılar</h4>
-        <img src="https://www.globcom-llc.com/resources/qazon%20reshetka%20.jpg" class="category-main-img zoomable">
+        <h4>Bordürlər</h4>
+        <div class="product-subcategories">
+          <div class="subcategory"><h5>Bordür "KANTA & KANTA Pro"</h5><div class="product-images"><img src="a1.png" class="zoomable"><img src="a2.png" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Bordür "New Fix & New Fix Roll"</h5><div class="product-images"><img src="a3.png" class="zoomable"><img src="a4.png" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Bordür "Daşlar"</h5><div class="product-images"><img src="a5.png" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Plastik landşaft bordürü</h5><div class="product-images"><img src="a6.png" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Polad bordür</h5><div class="product-images"><img src="a7.png" class="zoomable"></div></div>
+          <div class="subcategory"><h5>Ağac qoruma sistemi</h5><div class="product-images"><img src="a8.png" class="zoomable"></div></div>
+
+
+        </div>
+         
       </div>
     </div>
   </div>
@@ -380,7 +413,7 @@
         <img src="https://www.globcom-llc.com/resources/IMG_03026.JPG" class="zoomable">
         <img src="https://www.globcom-llc.com/resources/t%20%281%29.JPG" class="zoomable">
         <img src="https://www.globcom-llc.com/resources/IMG_4466.jpg" class="zoomable">
-        <img src="https://www.globcom-llc.com/resources/Умань_Софиевский%20парк.JPG" class="zoomable">
+        <img src="https://www.globcom-llc.com/resources/Умань_Софиevskiy%20park.JPG" class="zoomable">
         <img src="https://www.globcom-llc.com/resources/IMG_0095.JPG" class="zoomable">
         <img src="https://www.globcom-llc.com/resources/Наши%20объекты%20002.jpg" class="zoomable">
         <img src="https://www.globcom-llc.com/resources/Гост.Экспресс%20001%20Киев.jpg" class="zoomable">
